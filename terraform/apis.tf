@@ -11,6 +11,7 @@ locals {
     "iam.googleapis.com",
     "cloudresourcemanager.googleapis.com",
     "serviceusage.googleapis.com",
+    "discoveryengine.googleapis.com",
   ]
 }
 
