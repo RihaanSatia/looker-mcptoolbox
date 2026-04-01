@@ -12,6 +12,7 @@ locals {
     "cloudresourcemanager.googleapis.com",
     "serviceusage.googleapis.com",
     "discoveryengine.googleapis.com",
+    "aiplatform.googleapis.com",
   ]
 }
 

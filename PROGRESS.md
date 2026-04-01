@@ -39,15 +39,21 @@ BigQuery (public dataset to start)
 
 ---
 
-## In Progress
+## Completed
 
 ### Terraform Infra Improvements (enterprise best practices)
 - [x] Create GCS bucket for remote state: `gs://looker-mcptoolbox-tfstate`
-- [ ] Migrate `terraform.tfstate` from local to GCS backend (`versions.tf` + `terraform init -migrate-state`)
-- [ ] Set up Workload Identity Federation (keyless auth between GitHub Actions and GCP — no stored keys)
-- [ ] GitHub Actions workflows:
-  - `terraform-plan.yml` — runs `terraform plan` on every PR
-  - `terraform-apply.yml` — runs `terraform apply` automatically on merge to `main`
+- [x] Migrate `terraform.tfstate` from local to GCS backend (`versions.tf` + `terraform init -migrate-state`)
+- [x] Set up Workload Identity Federation — keyless auth between GitHub Actions and GCP via OIDC (no stored keys)
+- [x] GitHub Actions workflows:
+  - `terraform-plan.yml` — runs `terraform plan` on every PR touching `terraform/**`
+  - `terraform-apply.yml` — auto-applies on merge to `main`
+- [x] Scoped GitHub Actions SA roles (no broad editor — exact roles only)
+
+### Key Learnings
+- **WIF vs OAuth**: WIF uses OIDC (identity/authentication), not OAuth (authorization). GitHub issues a signed JWT per workflow run; GCP verifies it and issues a temporary token. No keys stored anywhere.
+- **Terraform drift**: Adding a resource to `.tf` files and running `terraform apply` is sufficient to absorb GUI-created resources into state for `google_project_service`.
+- **`terraform.tfvars` not in CI**: Since it's gitignored, vars must be passed explicitly via `-var` flags in workflows.
 
 ---
 

@@ -21,3 +21,10 @@ resource "google_project_iam_member" "looker_bigquery_job_user" {
   role    = "roles/bigquery.jobUser"
   member  = "serviceAccount:${google_service_account.looker_bigquery.email}"
 }
+
+# Grant Vertex AI User role (required to deploy and invoke Agent Engine)
+resource "google_project_iam_member" "looker_aiplatform_user" {
+  project = var.project_id
+  role    = "roles/aiplatform.user"
+  member  = "serviceAccount:${google_service_account.looker_bigquery.email}"
+}
