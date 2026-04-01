@@ -1,0 +1,35 @@
+# Terraform
+terraform/.terraform/
+terraform/*.tfstate
+terraform/*.tfstate.*
+terraform/.terraform.lock.hcl
+terraform/terraform.tfvars
+terraform/*.auto.tfvars
+terraform/crash.log
+terraform/crash.*.log
+terraform/.terraform.tfstate.lock.info
+
+# Sensitive files
+*.pem
+*.key
+credentials.json
+secrets.json
+
+# MCP Toolbox binary
+toolbox
+
+# Environment files
+.env
+.env.*
+
+# macOS
+.DS_Store
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# Logs
+*.log

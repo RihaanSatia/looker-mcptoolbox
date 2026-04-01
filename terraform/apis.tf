@@ -1,0 +1,24 @@
+# Enable required GCP APIs
+# These must be enabled before creating resources that depend on them
+
+locals {
+  required_apis = [
+    "looker.googleapis.com",
+    "bigquery.googleapis.com",
+    "run.googleapis.com",
+    "cloudbuild.googleapis.com",
+    "artifactregistry.googleapis.com",
+    "iam.googleapis.com",
+    "cloudresourcemanager.googleapis.com",
+    "serviceusage.googleapis.com",
+  ]
+}
+
+resource "google_project_service" "apis" {
+  for_each = toset(local.required_apis)
+
+  project = var.project_id
+  service = each.value
+
+  disable_on_destroy = false
+}

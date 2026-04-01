@@ -1,0 +1,11 @@
+# Copy this file to terraform.tfvars and fill in your values
+# Do NOT commit terraform.tfvars to version control
+
+project_id = "looker-mcptoolbox"
+region     = "us-central1"
+zone       = "us-central1-a"
+
+# Uncomment when enabling Looker instance:
+# looker_edition           = "LOOKER_CORE_STANDARD"
+# looker_oauth_client_id     = "your-oauth-client-id"
+# looker_oauth_client_secret = "your-oauth-client-secret"
