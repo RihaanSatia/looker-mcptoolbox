@@ -33,3 +33,7 @@ toolbox
 
 # Logs
 *.log
+
+# Local files
+500
+deploy.pdf
