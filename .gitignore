@@ -37,3 +37,5 @@ toolbox
 # Local files
 500
 deploy.pdf
+
+agent/__pycache__/agent.cpython-312.pyc

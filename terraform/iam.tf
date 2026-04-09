@@ -28,3 +28,11 @@ resource "google_project_iam_member" "looker_aiplatform_user" {
   role    = "roles/aiplatform.user"
   member  = "serviceAccount:${google_service_account.looker_bigquery.email}"
 }
+
+# Allow the developer to impersonate looker-bigquery-sa locally
+# This enables `gcloud auth application-default login --impersonate-service-account`
+resource "google_service_account_iam_member" "developer_impersonation" {
+  service_account_id = google_service_account.looker_bigquery.name
+  role               = "roles/iam.serviceAccountTokenCreator"
+  member             = "user:rihaansatia@gmail.com"
+}
